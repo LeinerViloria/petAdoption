@@ -25,10 +25,10 @@ const registerUser = async (req, res) => {
 
   if (!roleID) return res.status(500).send({ message: "No role was asigned" });
 
-  const passHash = bcrypt.hash(req.body.pass, 10);
+  const passHash = await bcrypt.hash(req.body.pass, 10);
 
   let schema = new userModel({
-    document: req.body.docuemnt,
+    document: req.body.document,
     name: req.body.name,
     roleId: roleID._id,
     direction: req.body.direction,
@@ -39,7 +39,7 @@ const registerUser = async (req, res) => {
     dbStatus: true,
   });
 
-  let result = schema.save();
+  let result = await schema.save();
 
   if (!result)
     return res.status(500).send({ message: "failed to register user" });
@@ -55,7 +55,7 @@ const registerUser = async (req, res) => {
           iat: moment().unix(),
         },
         process.env.SK_JWT
-      ),
+      )
     });
   } catch (e) {
     res.status(500).send({ message: "Register error" });
