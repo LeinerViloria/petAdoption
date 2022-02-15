@@ -5,7 +5,6 @@ import db from './db/db.js';
 import userRoute from "./routes/user.js";
 
 import role from './routes/role.js';
-import user from './routes/user.js';
 import animal from './routes/animal.js';
 import adoption from './routes/adoption.js';
 
@@ -17,7 +16,9 @@ APP.use(cors());
 APP.use("/api/user", userRoute);
 
 APP.use("/api/role", role);
+APP.use("/api/animal", animal);
 APP.use("/api/adoption", adoption);
+
 
 APP.listen(process.env.PORT, ()=>console.log("Running in the port: ", process.env.PORT));
 

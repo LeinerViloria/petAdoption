@@ -1,9 +1,7 @@
 import animal from "../models/animal.js";
 import user from "../models/user.js";
 import adoption from "../models/adoption.js";
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-import moment from "moment";
+
 
 const registerAdoption = async (req, res) => {
   if (!req.body.animalId || !req.body.ownerId || !req.body.employedId)
