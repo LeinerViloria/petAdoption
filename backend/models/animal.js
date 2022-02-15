@@ -11,6 +11,7 @@ const animalSchema = new mongoose.Schema({
     health:String,
     race:String,
     type:String,
+    identifier:String,
     dbStatus:Boolean,
     registerDate:{type:Date, default:Date.now}
 });
