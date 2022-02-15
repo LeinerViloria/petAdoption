@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { application } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import db from './db/db.js';
@@ -17,6 +17,7 @@ APP.use(cors());
 APP.use("/api/user", userRoute);
 
 APP.use("/api/role", role);
+APP.use("/api/adoption", adoption);
 
 APP.listen(process.env.PORT, ()=>console.log("Running in the port: ", process.env.PORT));
 
