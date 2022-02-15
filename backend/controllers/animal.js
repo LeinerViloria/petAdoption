@@ -2,7 +2,7 @@ import animal from "../models/animal.js";
 
 const registerAnimal = async (req,res)=>{
 
-    if(!req.body.name || !req.body.age|| !req.body.gender || !req.body.young || !req.body.weight || !req.body.height || !req.body.health || !req.body.race || !req.body.type)
+    if(!req.body.name || !req.body.age|| !req.body.gender || !req.body.young || !req.body.weight || !req.body.height || !req.body.health || !req.body.race || !req.body.type || !req.body.identifier )
 
     return res.status(400).send({message: "Imcomplete data"});
 
@@ -17,6 +17,7 @@ const registerAnimal = async (req,res)=>{
     health:req.body.health,
     race:req.body.race,
     type:req.body.type,
+    identifier: req.body.identifier,
     dbStatus:true,
     });
 
