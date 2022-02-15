@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import db from './db/db.js';
+import userRoute from "./routes/user.js";
 
 import role from './routes/role.js';
 import user from './routes/user.js';
@@ -13,6 +14,7 @@ dotenv.config();
 const APP = express();
 APP.use(express.json());
 APP.use(cors());
+APP.use("/api/user", userRoute);
 
 APP.use("/api/role", role);
 
