@@ -1,4 +1,6 @@
 import animal from "../models/animal.js";
+import jwt from "jsonwebtoken";
+import moment from "moment";
 
 const registerAnimal = async (req,res)=>{
 
@@ -25,7 +27,22 @@ const registerAnimal = async (req,res)=>{
 
     if (!result) return res.status(500).send({message: "Error to register animal"});
 
-    res.status(200).send({result});
+    try {
+        return res.status(200).json({
+            token : jwt.sign({
+                _id:result._id,
+                name:result.name,
+                race:result.race,
+                type:result.type,
+                identifier:result.identifier,
+                iat: moment().unix(),
+        },
+        process.env.SK_JWT
+        ),
+    });
+    } catch (e) {
+         res.status(500).send({message: "Register error:", e});
+    }
 };
 
 export default {registerAnimal};
