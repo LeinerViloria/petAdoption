@@ -4,7 +4,7 @@ import moment from "moment";
 
 const registerAnimal = async (req,res)=>{
 
-    if(!req.body.name || !req.body.age|| !req.body.gender || !req.body.young || !req.body.weight || !req.body.height || !req.body.health || !req.body.race || !req.body.type || !req.body.identifier )
+    if(!req.body.name || !req.body.age|| !req.body.gender || !req.body.weight || !req.body.height || !req.body.health || !req.body.race || !req.body.type || !req.body.identifier )
 
     return res.status(400).send({message: "Imcomplete data"});
 
